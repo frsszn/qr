@@ -1,0 +1,7 @@
+
+train: /content/real_dataset/images/train
+val: /content/real_dataset/images/val
+test: /content/real_dataset/images/test
+
+nc: 2
+names: ['barcode', 'qr']
