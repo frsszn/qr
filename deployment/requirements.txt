@@ -1,0 +1,8 @@
+streamlit==1.28.0
+ultralytics
+opencv-python-headless
+numpy
+pandas
+pyzbar
+pyzxing
+matplotlib
