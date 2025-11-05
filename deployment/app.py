@@ -24,7 +24,7 @@ padding = 20
 save_failed = True
 output_csv = "decoded_result.csv"
 
-# ====================== LOAD MODEL SEKALI SAJA ======================
+# ====================== LOAD MODEL ======================
 @st.cache_resource
 def load_model():
     return YOLO("model/best.pt")
@@ -49,12 +49,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-tab_about, tab_detect, tab_eda = st.tabs(["ℹ️ About", "🔍 Detection", "📊 EDA"])
+tab_about, tab_detect = st.tabs(["ℹ️ About", "🔍 Detection"])
 
 # ====== ABOUT ======
 with tab_about:
     centered_content(lambda: (
-        st.title("📦 Barcode Detector App"),
+        st.title("📦 BarSight: a Barcode and QRCode Decoder App"),
         st.image(
             "https://compote.slate.com/images/6b8aaea8-f787-4ce3-a039-5aa0f003ba07.jpeg?crop=1560%2C1040%2Cx0%2Cy0"
         ),
@@ -193,28 +193,10 @@ with tab_detect:
                      )
 
             if not df.empty:
-                st.markdown("### 📋 Decoded Data (clean view)")
+                st.markdown("### 📋 Decoded Data")
                 st.table(df)
                 csv = df.to_csv(index=False).encode("utf-8")
                 st.download_button("⬇️ Download CSV", csv, output_csv, "text/csv")
             else:
                 st.warning("⚠️ Tidak ada barcode yang berhasil didecode.")
 
-# ====================== EDA TAB ======================
-with tab_eda:
-    st.header("📊 Exploratory Data Analysis")
-    st.write("Grafik distribusi hasil decode akan muncul di sini setelah deteksi.")
-
-    df_last = st.session_state.get("last_df", pd.DataFrame(columns=["BBox ID", "Source", "Decoded Content", "Type"]))
-    if not df_last.empty:
-        col1, col2 = st.columns(2)
-        with col1:
-            st.write("Counts by Type")
-            st.bar_chart(df_last["Type"].value_counts())
-        with col2:
-            st.write("Counts by Source")
-            st.bar_chart(df_last["Source"].value_counts())
-        st.markdown("### Decoded table preview")
-        st.table(df_last)
-    else:
-        st.info("⚠️ Jalankan deteksi dulu di tab *Detection* untuk menampilkan EDA.")
