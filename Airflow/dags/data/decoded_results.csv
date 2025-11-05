@@ -1,0 +1,2 @@
+filename,barcode_type,decoded_content,decoder_used
+barcode_26.jpg,CODE128,ERA000000002297187,pyzbar
