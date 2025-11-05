@@ -1,5 +1,5 @@
 <h3 style="text-align: center;">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Open+Sans&weight=700&color=666666&size=50&center=true&vCenter=true&width=1000&height=70&duration=3000&lines=Hello+There%2C+Welcome+to+BarSight:+a+Barcode+and+QRCode+Detector+App">
+  <img src="https://readme-typing-svg.herokuapp.com/?font=Open+Sans&weight=700&color=666666&size=50&center=true&vCenter=true&width=1000&height=70&duration=3000&lines=BarSight:+a+Barcode+and+QRCode+Detector+App">
 </h3>
 
 ---
